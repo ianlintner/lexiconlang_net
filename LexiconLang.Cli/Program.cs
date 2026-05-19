@@ -1,14 +1,14 @@
 using LexiconLang.Cli;
 
-var args = ArgParser.Parse(Environment.GetCommandLineArgs()[1..]);
+var parsed = ArgParser.Parse(Environment.GetCommandLineArgs()[1..]);
 
-switch (args.Command)
+switch (parsed.Command)
 {
     case "build-markov":
-        await Commands.BuildMarkovAsync(args);
+        await Commands.BuildMarkovAsync(parsed);
         break;
     case "scaffold-pack":
-        Commands.ScaffoldPack(args);
+        Commands.ScaffoldPack(parsed);
         break;
     case "help":
     case "--help":
@@ -20,7 +20,7 @@ switch (args.Command)
   help");
         break;
     default:
-        Console.Error.WriteLine($"Unknown command: {args.Command}");
+        Console.Error.WriteLine($"Unknown command: {parsed.Command}");
         Environment.Exit(1);
         break;
 }

@@ -73,8 +73,10 @@ public static class Parser
                 var actions = new List<ActionNode>();
                 var cleanRef = rawRef;
 
-                // Parse modifiers and symbol
-                var parts = cleanRef.Split('.');
+                // Parse modifiers and symbol: symbol|mod1|mod2  or  symbol.mod1.mod2 (legacy)
+                var parts = cleanRef.Contains('|')
+                    ? cleanRef.Split('|')
+                    : cleanRef.Split('.');
                 var symbol = parts[0];
                 var mods = new List<ModifierCall>();
 

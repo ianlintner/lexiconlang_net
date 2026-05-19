@@ -1,0 +1,81 @@
+<Project>
+  <PropertyGroup>
+    <Authors>Ian Lintner</Authors>
+    <Company>LexiconLang</Company>
+    <RepositoryUrl>https://github.com/ianlintner/lexiconlang_net</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/ianlintner/lexiconlang_net</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Description>Deterministic procedural language/content generation primitives and packages for .NET.</Description>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSourceRevisionInInformationalVersion>true</IncludeSourceRevisionInInformationalVersion>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(MSBuildProjectName)' != 'LexiconLang.Cli'">
+    <None Include="$(MSBuildThisFileDirectory)README.md" Pack="true" PackagePath="/" Visible="false" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(IsTestProject)' == 'true'">
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'LexiconLang.Cli'">
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'LexiconLang.Core'">
+    <PackageId>LexiconLang.Core</PackageId>
+    <Title>LexiconLang Core</Title>
+    <Description>Core deterministic RNG, context, combinators, and weighted sampling for LexiconLang .NET.</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'LexiconLang.Grammar'">
+    <PackageId>LexiconLang.Grammar</PackageId>
+    <Title>LexiconLang Grammar</Title>
+    <Description>Tracery-style grammar parsing and expansion for LexiconLang .NET.</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'LexiconLang.Markov'">
+    <PackageId>LexiconLang.Markov</PackageId>
+    <Title>LexiconLang Markov</Title>
+    <Description>Markov training and deterministic sampling for LexiconLang .NET.</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'LexiconLang.Language'">
+    <PackageId>LexiconLang.Language</PackageId>
+    <Title>LexiconLang Language</Title>
+    <Description>Lexicon, phonotactics, archetypes, and template-based language generation for LexiconLang .NET.</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'LexiconLang.Glyphs'">
+    <PackageId>LexiconLang.Glyphs</PackageId>
+    <Title>LexiconLang Glyphs</Title>
+    <Description>Procedural glyph generation and rendering (SVG/canvas/unicode) for LexiconLang .NET.</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'LexiconLang.Fantasy'">
+    <PackageId>LexiconLang.Fantasy</PackageId>
+    <Title>LexiconLang Fantasy</Title>
+    <Description>Fantasy content pack, cultures, and semantic data for LexiconLang .NET.</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'LexiconLang.SciFi'">
+    <PackageId>LexiconLang.SciFi</PackageId>
+    <Title>LexiconLang SciFi</Title>
+    <Description>Sci-fi content pack, cultures, and semantic data for LexiconLang .NET.</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'LexiconLang.Modern'">
+    <PackageId>LexiconLang.Modern</PackageId>
+    <Title>LexiconLang Modern</Title>
+    <Description>Modern naming/content primitives for LexiconLang .NET.</Description>
+  </PropertyGroup>
+</Project>

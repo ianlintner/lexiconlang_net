@@ -1,0 +1,71 @@
+name: Pack & Publish NuGet
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  pack:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Compute package version
+        id: version
+        shell: bash
+        run: |
+          if [[ "${GITHUB_REF_TYPE}" == "tag" ]]; then
+            TAG="${GITHUB_REF_NAME#v}"
+            echo "version=$TAG" >> "$GITHUB_OUTPUT"
+          else
+            echo "version=0.1.0-preview.${GITHUB_RUN_NUMBER}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Restore
+        run: dotnet restore LexiconLang.Net.slnx
+
+      - name: Build
+        run: dotnet build LexiconLang.Net.slnx -c Release --no-restore -warnaserror
+
+      - name: Pack library projects
+        run: |
+          mkdir -p artifacts/packages
+          dotnet pack LexiconLang.Core/LexiconLang.Core.csproj -c Release --no-build -p:Version=${{ steps.version.outputs.version }} -o artifacts/packages
+          dotnet pack LexiconLang.Grammar/LexiconLang.Grammar.csproj -c Release --no-build -p:Version=${{ steps.version.outputs.version }} -o artifacts/packages
+          dotnet pack LexiconLang.Markov/LexiconLang.Markov.csproj -c Release --no-build -p:Version=${{ steps.version.outputs.version }} -o artifacts/packages
+          dotnet pack LexiconLang.Language/LexiconLang.Language.csproj -c Release --no-build -p:Version=${{ steps.version.outputs.version }} -o artifacts/packages
+          dotnet pack LexiconLang.Glyphs/LexiconLang.Glyphs.csproj -c Release --no-build -p:Version=${{ steps.version.outputs.version }} -o artifacts/packages
+          dotnet pack LexiconLang.Fantasy/LexiconLang.Fantasy.csproj -c Release --no-build -p:Version=${{ steps.version.outputs.version }} -o artifacts/packages
+          dotnet pack LexiconLang.SciFi/LexiconLang.SciFi.csproj -c Release --no-build -p:Version=${{ steps.version.outputs.version }} -o artifacts/packages
+          dotnet pack LexiconLang.Modern/LexiconLang.Modern.csproj -c Release --no-build -p:Version=${{ steps.version.outputs.version }} -o artifacts/packages
+
+      - name: Upload package artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: nuget-packages-${{ steps.version.outputs.version }}
+          path: artifacts/packages/*.nupkg
+
+      - name: Upload symbols
+        uses: actions/upload-artifact@v4
+        with:
+          name: nuget-symbols-${{ steps.version.outputs.version }}
+          path: artifacts/packages/*.snupkg
+
+      - name: Publish to NuGet (tags only)
+        if: startsWith(github.ref, 'refs/tags/v') && secrets.NUGET_API_KEY != ''
+        run: |
+          dotnet nuget push artifacts/packages/*.nupkg \
+            --api-key "${{ secrets.NUGET_API_KEY }}" \
+            --source "https://api.nuget.org/v3/index.json" \
+            --skip-duplicate

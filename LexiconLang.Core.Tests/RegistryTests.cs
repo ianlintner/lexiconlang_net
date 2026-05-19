@@ -8,6 +8,6 @@ namespace lexiconlang_net
 {
     public class RegistryTests
     {
-        
+
     }
 }

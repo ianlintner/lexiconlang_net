@@ -138,7 +138,7 @@ public class MarkovTrainingTests
         };
 
         var options = new TrainOptions(
-            RejectSubstringsOfLength: 4 
+            RejectSubstringsOfLength: 4
         );
 
         var model = Trainer.Train(corpus, options);
@@ -147,7 +147,7 @@ public class MarkovTrainingTests
         for (var i = 0; i < 50; i++)
         {
             // Set max attempts higher and fallback strings
-            try 
+            try
             {
                 var res = Sampler.Sample(model, rng.Fork($"i:{i}"), new SampleOptions(MaxAttempts: 200, MinLength: 2, MaxLength: 8));
                 Assert.NotEqual("abcd", res);
@@ -155,7 +155,7 @@ public class MarkovTrainingTests
                 Assert.NotEqual("hijk", res);
                 Assert.NotEqual("lmno", res);
             }
-            catch (InvalidOperationException) 
+            catch (InvalidOperationException)
             {
                 // Ignoring failure if it can't find anything valid, because 
                 // generating anything from this sparse model while rejecting the exact original strings

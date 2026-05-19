@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\LexiconLang.Core\LexiconLang.Core.csproj" />
+    <ProjectReference Include="..\..\LexiconLang.Grammar\LexiconLang.Grammar.csproj" />
+    <ProjectReference Include="..\..\LexiconLang.Markov\LexiconLang.Markov.csproj" />
+    <ProjectReference Include="..\..\LexiconLang.Language\LexiconLang.Language.csproj" />
+    <ProjectReference Include="..\..\LexiconLang.Glyphs\LexiconLang.Glyphs.csproj" />
+    <ProjectReference Include="..\..\LexiconLang.Fantasy\LexiconLang.Fantasy.csproj" />
+    <ProjectReference Include="..\..\LexiconLang.SciFi\LexiconLang.SciFi.csproj" />
+    <ProjectReference Include="..\..\LexiconLang.Modern\LexiconLang.Modern.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>

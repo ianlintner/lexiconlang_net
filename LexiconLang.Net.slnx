@@ -1,4 +1,5 @@
 <Solution>
+  <Folder Name="/examples/" />
   <Project Path="LexiconLang.Cli/LexiconLang.Cli.csproj" />
   <Project Path="LexiconLang.Core.Tests/LexiconLang.Core.Tests.csproj" />
   <Project Path="LexiconLang.Core/LexiconLang.Core.csproj" />

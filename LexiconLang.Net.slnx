@@ -1,4 +1,19 @@
 <Solution>
+  <Project Path="LexiconLang.Cli/LexiconLang.Cli.csproj" />
   <Project Path="LexiconLang.Core.Tests/LexiconLang.Core.Tests.csproj" />
   <Project Path="LexiconLang.Core/LexiconLang.Core.csproj" />
+  <Project Path="LexiconLang.Fantasy/LexiconLang.Fantasy.csproj" />
+  <Project Path="LexiconLang.Glyphs/LexiconLang.Glyphs.csproj" />
+  <Project Path="LexiconLang.Grammar/LexiconLang.Grammar.csproj" />
+  <Project Path="LexiconLang.Language/LexiconLang.Language.csproj" />
+  <Project Path="LexiconLang.Markov/LexiconLang.Markov.csproj" />
+  <Project Path="LexiconLang.Modern/LexiconLang.Modern.csproj" />
+  <Project Path="LexiconLang.SciFi.Tests/LexiconLang.SciFi.Tests.csproj" />
+  <Project Path="LexiconLang.SciFi/LexiconLang.SciFi.csproj" />
+  <Project Path="LexiconLang.Grammar.Tests/LexiconLang.Grammar.Tests.csproj" />
+  <Project Path="LexiconLang.Markov.Tests/LexiconLang.Markov.Tests.csproj" />
+  <Project Path="LexiconLang.Language.Tests/LexiconLang.Language.Tests.csproj" />
+  <Project Path="LexiconLang.Glyphs.Tests/LexiconLang.Glyphs.Tests.csproj" />
+  <Project Path="LexiconLang.Fantasy.Tests/LexiconLang.Fantasy.Tests.csproj" />
+  <Project Path="LexiconLang.Modern.Tests/LexiconLang.Modern.Tests.csproj" />
 </Solution>

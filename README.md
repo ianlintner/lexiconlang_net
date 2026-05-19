@@ -50,6 +50,7 @@ dotnet test LexiconLang.Net.slnx
   - Restore, format verification, build with warnings-as-errors, and test.
 - `Pack & Publish NuGet` workflow (`.github/workflows/pack.yml`)
   - Packs all library projects on tag pushes (`v*`) or manual dispatch.
+  - Supports an optional manual `version` input for preview or dry-run package builds.
   - Uploads `.nupkg` + `.snupkg` artifacts.
   - Publishes to NuGet when run on a version tag and `NUGET_API_KEY` secret is configured.
 
@@ -58,6 +59,7 @@ dotnet test LexiconLang.Net.slnx
 1. Create a git tag like `v0.1.0`.
 2. Push the tag.
 3. Workflow packs and publishes packages to NuGet.org.
+4. For a maintainer checklist and dry-run flow, see [`RELEASE.md`](RELEASE.md).
 
 ### Required GitHub secret
 

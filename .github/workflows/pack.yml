@@ -2,9 +2,18 @@ name: Pack & Publish NuGet
 
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: "Optional package version override (without leading v)"
+        required: false
+        type: string
   push:
     tags:
       - "v*"
+
+concurrency:
+  group: pack-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   pack:
@@ -25,7 +34,10 @@ jobs:
         id: version
         shell: bash
         run: |
-          if [[ "${GITHUB_REF_TYPE}" == "tag" ]]; then
+          MANUAL_VERSION="${{ github.event.inputs.version }}"
+          if [[ -n "$MANUAL_VERSION" ]]; then
+            echo "version=$MANUAL_VERSION" >> "$GITHUB_OUTPUT"
+          elif [[ "${GITHUB_REF_TYPE}" == "tag" ]]; then
             TAG="${GITHUB_REF_NAME#v}"
             echo "version=$TAG" >> "$GITHUB_OUTPUT"
           else

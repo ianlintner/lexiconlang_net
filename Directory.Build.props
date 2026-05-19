@@ -7,6 +7,7 @@
     <PackageProjectUrl>https://github.com/ianlintner/lexiconlang_net</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>lexiconlang;procedural-generation;worldbuilding;conlang;name-generator;deterministic</PackageTags>
     <Description>Deterministic procedural language/content generation primitives and packages for .NET.</Description>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);CS1591</NoWarn>

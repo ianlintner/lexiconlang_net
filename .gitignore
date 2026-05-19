@@ -1,2 +1,5 @@
 bin/
 obj/
+artifacts/packages/
+*.nupkg
+*.snupkg

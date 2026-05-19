@@ -54,4 +54,28 @@ public class ModernNamesTests
         // Different seeds should yield different results (overwhelmingly likely)
         Assert.False(name1.Full == name2.Full && name1.Sex == name2.Sex);
     }
+
+    [Fact]
+    public void GenerateCityNameProducesNonEmptyString()
+    {
+        var ctx = LexiconContext.Create("city-test");
+        var city = ModernNames.CityName.Generate(ctx);
+        Assert.False(string.IsNullOrEmpty(city));
+    }
+
+    [Fact]
+    public void GenerateStreetNameProducesNonEmptyString()
+    {
+        var ctx = LexiconContext.Create("street-test");
+        var street = ModernNames.StreetName.Generate(ctx);
+        Assert.False(string.IsNullOrEmpty(street));
+    }
+
+    [Fact]
+    public void GenerateCompanyNameProducesNonEmptyString()
+    {
+        var ctx = LexiconContext.Create("company-test");
+        var company = ModernNames.CompanyName.Generate(ctx);
+        Assert.False(string.IsNullOrEmpty(company));
+    }
 }

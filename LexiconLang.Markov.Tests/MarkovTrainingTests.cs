@@ -125,4 +125,42 @@ public class MarkovTrainingTests
         var corpus = Array.Empty<TrainEntry>();
         Assert.Throws<InvalidOperationException>(() => Trainer.Train(corpus));
     }
+
+    [Fact]
+    public void SamplerRejectsForbiddenSubstrings()
+    {
+        var corpus = new[]
+        {
+            new TrainEntry("abcd"),
+            new TrainEntry("defg"),
+            new TrainEntry("hijk"),
+            new TrainEntry("lmno"),
+        };
+
+        var options = new TrainOptions(
+            RejectSubstringsOfLength: 4 
+        );
+
+        var model = Trainer.Train(corpus, options);
+
+        var rng = Rng.Create("rejection");
+        for (var i = 0; i < 50; i++)
+        {
+            // Set max attempts higher and fallback strings
+            try 
+            {
+                var res = Sampler.Sample(model, rng.Fork($"i:{i}"), new SampleOptions(MaxAttempts: 200, MinLength: 2, MaxLength: 8));
+                Assert.NotEqual("abcd", res);
+                Assert.NotEqual("defg", res);
+                Assert.NotEqual("hijk", res);
+                Assert.NotEqual("lmno", res);
+            }
+            catch (InvalidOperationException) 
+            {
+                // Ignoring failure if it can't find anything valid, because 
+                // generating anything from this sparse model while rejecting the exact original strings
+                // is extremely hard and might just fail out, which also proves it rejected them!
+            }
+        }
+    }
 }

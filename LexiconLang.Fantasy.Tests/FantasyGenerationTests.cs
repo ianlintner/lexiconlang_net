@@ -217,4 +217,30 @@ public class FantasyGenerationTests
             Assert.NotEmpty(culture.MeaningPacks);
         }
     }
+
+    [Fact]
+    public void GenerateEncounterProducesPopulatedObject()
+    {
+        var ctx = LexiconContext.Create("encounter-seed");
+        var enc = FantasyEncounters.MakeEncounter(ctx);
+
+        Assert.False(string.IsNullOrEmpty(enc.Faction));
+        Assert.False(string.IsNullOrEmpty(enc.Leader));
+        Assert.False(string.IsNullOrEmpty(enc.Title));
+        Assert.False(string.IsNullOrEmpty(enc.Motive));
+        Assert.False(string.IsNullOrEmpty(enc.Description));
+        Assert.False(string.IsNullOrEmpty(enc.Summary));
+    }
+
+    [Fact]
+    public void GenerateEncounterIsDeterministic()
+    {
+        var ctx1 = LexiconContext.Create("det-enc-seed");
+        var enc1 = FantasyEncounters.MakeEncounter(ctx1);
+
+        var ctx2 = LexiconContext.Create("det-enc-seed");
+        var enc2 = FantasyEncounters.MakeEncounter(ctx2);
+
+        Assert.Equal(enc1.Summary, enc2.Summary);
+    }
 }

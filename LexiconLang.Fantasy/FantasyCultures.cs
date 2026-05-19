@@ -63,4 +63,52 @@ public static class FantasyCultures
         Templates: new NameTemplates(
             Given: ComposeTemplate((WordClass.Adjective, "attribute"), (WordClass.Noun, "power"))),
         Capitalize: false);
+
+    public static readonly Culture Plantoid = new(
+        Id: "fantasy.plantoid",
+        Glyphs: Archetypes.Flowing,
+        MeaningPacks: new[] { CoreMeanings.Core, FantasyMeanings.Industrial },
+        Templates: new NameTemplates(
+            Given: ComposeTemplate((WordClass.Adjective, "attribute"), (WordClass.Noun, "nature")),
+            Surname: ComposeTemplate((WordClass.Noun, "nature"), (WordClass.Noun, "nature")),
+            Settlement: ComposeTemplate((WordClass.Noun, "nature"), (WordClass.Noun, "structure"))),
+        Capitalize: false);
+
+    public static readonly Culture Mycanoid = new(
+        Id: "fantasy.mycanoid",
+        Glyphs: Archetypes.Sibilant,
+        MeaningPacks: new[] { CoreMeanings.Core, FantasyMeanings.Industrial },
+        Templates: new NameTemplates(
+            Given: ComposeTemplate((WordClass.Adjective, "attribute"), (WordClass.Noun, "nature")),
+            Surname: ComposeTemplate((WordClass.Noun, "nature"), (WordClass.Noun, "nature")),
+            Settlement: ComposeTemplate((WordClass.Noun, "nature"), (WordClass.Noun, "structure"))),
+        Capitalize: false);
+
+    public static readonly Culture Celestial = new(
+        Id: "fantasy.celestial",
+        Glyphs: Archetypes.Resonant,
+        MeaningPacks: new[] { CoreMeanings.Core, FantasyMeanings.Industrial },
+        Templates: new NameTemplates(
+            Given: ComposeTemplate((WordClass.Adjective, "divine"), (WordClass.Noun, "nature")),
+            Surname: ComposeTemplate((WordClass.Noun, "nature"), (WordClass.Noun, "magic")),
+            Settlement: ComposeTemplate((WordClass.Noun, "nature"), (WordClass.Noun, "structure"))),
+        Capitalize: false);
+
+    public static readonly Culture Fey = new(
+        Id: "fantasy.fey",
+        Glyphs: Archetypes.Flowing,
+        MeaningPacks: new[] { CoreMeanings.Core, FantasyMeanings.Industrial },
+        Templates: new NameTemplates(
+            Given: ComposeTemplate((WordClass.Adjective, "emotion"), (WordClass.Noun, "nature")),
+            Surname: ComposeTemplate((WordClass.Noun, "nature"), (WordClass.Noun, "art"))),
+        Capitalize: false);
+
+    public static readonly Culture Tiefling = new(
+        Id: "fantasy.tiefling",
+        Glyphs: Archetypes.Sibilant,
+        MeaningPacks: new[] { CoreMeanings.Core, FantasyMeanings.Industrial },
+        Templates: new NameTemplates(
+            Given: ComposeTemplate((WordClass.Adjective, "evil"), (WordClass.Noun, "power")),
+            Surname: ComposeTemplate((WordClass.Noun, "magic"), (WordClass.Noun, "death"))),
+        Capitalize: false);
 }

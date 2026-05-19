@@ -80,16 +80,3 @@ public static class ShapeGenerator
         return new ShapeParams(BaseShape.Polygon, @params);
     }
 }
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace lexiconlang_net
-{
-    public class ShapeGenerator
-    {
-        
-    }
-}

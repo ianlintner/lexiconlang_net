@@ -118,16 +118,3 @@ public static class Phonotactics
         return char.ToUpperInvariant(word[0]) + word[1..];
     }
 }
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace lexiconlang_net
-{
-    public class Phonotactics
-    {
-        
-    }
-}

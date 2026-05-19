@@ -127,16 +127,3 @@ public static class BuiltinModifiers
         return c is 'a' or 'e' or 'i' or 'o' or 'u';
     }
 }
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace lexiconlang_net
-{
-    public class Modifiers
-    {
-        
-    }
-}

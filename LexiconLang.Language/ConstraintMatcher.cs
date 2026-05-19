@@ -1,13 +1,22 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+namespace LexiconLang.Language;
 
-namespace lexiconlang_net
+public static class ConstraintMatcher
 {
-    public class ConstraintMatcher
+    /// <summary>
+    /// Checks if a constraint pattern matches a class sequence.
+    /// Supports "*" wildcard matching any single class.
+    /// </summary>
+    public static bool Matches(string[] pattern, string[] sequence)
     {
-        
+        if (pattern.Length != sequence.Length)
+            return false;
+
+        for (var i = 0; i < pattern.Length; i++)
+        {
+            if (pattern[i] != "*" && pattern[i] != sequence[i])
+                return false;
+        }
+
+        return true;
     }
 }

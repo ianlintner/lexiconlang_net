@@ -64,16 +64,3 @@ public static class UnicodeRenderer
         return mappings.GetValueOrDefault(key, fallback);
     }
 }
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace lexiconlang_net
-{
-    public class UnicodeRenderer
-    {
-        
-    }
-}
